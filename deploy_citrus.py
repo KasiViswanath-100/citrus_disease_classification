@@ -9,7 +9,7 @@ st.set_option('deprecation.showfileUploaderEncoding', True)
 # st.text("Provide URL of Flower image to be classified:")
 @st.cache(allow_output_mutation=True)
 def load_model1():
-	model1 = tf.keras.models.load_model('citrus_leaves_test_88.h5')
+	model1 = tf.keras.models.load_model('models/citrus_leaves_test_88.h5')
 	return model1
 with st.spinner('Loading Model into Memory....'):
     model1 = load_model1()
@@ -63,7 +63,7 @@ else:
 
 @st.cache(allow_output_mutation=True)
 def load_model2():
-	model2 = tf.keras.models.load_model('citrus_Fruits_default_46.hdf5')
+	model2 = tf.keras.models.load_model('models/citrus_Fruits_default_46.hdf5')
 	return model2
 with st.spinner('Loading Model into Memory....'):
     model2 = load_model2()
