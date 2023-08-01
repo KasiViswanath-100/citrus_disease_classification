@@ -6,7 +6,7 @@ try:
 except subprocess.CalledProcessError as e:
 	print(f"Error Installing TensorFlow: {e}")
 # pip install tensorflow
-import tensorflow as tf
+# import tensorflow as tf
 import numpy as np
 from PIL import Image
 import requests
