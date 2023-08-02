@@ -1,7 +1,7 @@
 from io import BytesIO
 import streamlit as st
 import subprocess
-subprocess.check_call(['pip', 'install', '-m', 'requirements.txt'])
+subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
 
 # pip install tensorflow
 import tensorflow as tf
