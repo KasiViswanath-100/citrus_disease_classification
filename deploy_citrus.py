@@ -1,10 +1,8 @@
 from io import BytesIO
 import streamlit as st
 import subprocess
-try:
-  subprocess.check_call(['pip', 'install', 'tensorflow'])
-except subprocess.CalledProcessError as e:
-  print(f"Error Installing TensorFlow: {e}")
+subprocess.check_call(['pip', 'install', 'tensorflow'])
+
 # pip install tensorflow
 import tensorflow as tf
 import numpy as np
