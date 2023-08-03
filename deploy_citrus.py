@@ -2,7 +2,6 @@ from io import BytesIO
 import streamlit as st
 import subprocess
 subprocess.check_call(['pip', 'install', '-r', 'requirements.txt'])
-
 # pip install tensorflow
 import tensorflow as tf
 import numpy as np
@@ -20,40 +19,26 @@ with st.spinner('Loading Model into Memory....'):
 
 class_names = ['Black spot', 'Melanose', 'Canker', 'Greening', 'healthy']  
 
-
 def predict_class1(image, model1):
-
 	image = tf.cast(image, tf.float32)
 	image = tf.image.resize(image, [224, 224])
-
 	image = np.expand_dims(image, axis = 0)
-
 	prediction1 = model1.predict(image)
-
 	return prediction1
+	
 def predict_class2(image, model2):
-
 	image = tf.cast(image, tf.float32)
 	image = tf.image.resize(image, [224, 224])
-
 	image = np.expand_dims(image, axis = 0)
-
 	prediction2 = model2.predict(image)
-
 	return prediction2
-
-
-
 model1 = load_model1()
 
 st.image('Lemon.jpg', width=200, )
 st.title('Citrus Plant Diseases Detection')
-
 file = st.file_uploader("Upload an image of disease effected leaf", type=["jpg", "png", "jpeg"])
-
 if file is None:
-    st.text('Waiting for upload...')
-    
+    st.text('Waiting for upload...')  
 else:
     slot = st.empty()
     slot.text('Running the Inference...')
@@ -63,7 +48,6 @@ else:
     score = tf.nn.softmax(pred[0])
     output = "This image most likely belongs to {}".format(class_names[np.argmax(score)])#, 100 * np.max(score))
     st.success(output)
-    
 
 @st.cache(allow_output_mutation=True)
 def load_model2():
@@ -71,13 +55,10 @@ def load_model2():
 	return model2
 with st.spinner('Loading Model into Memory....'):
     model2 = load_model2()
-class_names2 = ['Black spot', 'Canker', 'Greening', 'Scab', 'healthy']
-   
+class_names2 = ['Black spot', 'Canker', 'Greening', 'Scab', 'healthy'] 
 file = st.file_uploader("Upload an image of disease effected fruit", type=["jpg", "png", "jpeg"])
-
 if file is None:
-    st.text('Waiting for upload...')
-    
+    st.text('Waiting for upload...')    
 else:
     slot = st.empty()
     slot.text('Running the Inference...')
